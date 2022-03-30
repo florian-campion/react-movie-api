@@ -1,0 +1,21 @@
+.grid {
+    width: 900px;
+    max-width: 90%;
+    margin: 50px auto;
+}
+    .grid .card {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+        .card article img {
+            max-width: 100%;
+        }
+    
+    .list article {
+        display:flex;
+    }
+    .list article:not(:last-child) {
+        margin-bottom: 20px;
+    }
+    
