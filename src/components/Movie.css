@@ -1,0 +1,37 @@
+.movie {
+    padding: 10px;
+    background: white;
+    border-radius: 7px;
+    box-shadow:  0 18px 20px -20px rgba(14, 101, 104, .4);
+}
+
+.liste .movie {
+    margin-bottom: 15px;
+    display:flex;
+    align-items: center;
+}
+
+.liste .movie img { 
+    height: 6rem;
+    border-radius: 50%;
+    margin-right: 20px;
+    aspect-ratio: 1/1;
+}
+.movie img {
+    width: 100%;
+    margin-bottom: 15px;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+.favorite {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: grey;
+    display:inline-block;
+    height: 44px;
+    width: 44px;
+}
+
+.favorite.active {
+    background-color: blue;
+}
