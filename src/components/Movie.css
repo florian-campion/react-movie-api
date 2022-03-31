@@ -1,37 +1,60 @@
-.movie {
+.Movie {
     padding: 10px;
-    background: white;
+    background: #0d2735;
     border-radius: 7px;
-    box-shadow:  0 18px 20px -20px rgba(14, 101, 104, .4);
+    /* box-shadow:  10px 5px 5px rgba(82, 82, 82, 0.25); */
+    color: white;
+    
 }
-
-.liste .movie {
-    margin-bottom: 15px;
-    display:flex;
+h3 {
+    font-size: 1.4rem;
+    height: 60px;
+    text-align: center;
+}
+.Movie div {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.liste .movie img { 
-    height: 6rem;
-    border-radius: 50%;
-    margin-right: 20px;
-    aspect-ratio: 1/1;
+.favorite {
+    
+    float: left;
+    margin-left: 10px;
 }
-.movie img {
-    width: 100%;
-    margin-bottom: 15px;
-    aspect-ratio: 4/3;
-    object-fit: cover;
+
+.view{
+    float: right;
+    margin-right: 10px;
 }
 
 .favorite {
+    
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    background-color: grey;
+    background-color: rgb(134, 134, 134);
     display:inline-block;
-    height: 44px;
-    width: 44px;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .favorite.active {
-    background-color: blue;
+    background-color: rgb(255, 217, 0);
 }
+
+.favorite:hover{
+    cursor: pointer;
+}
+
+.view {
+    clip-path: polygon(35% 0%,65% 0%,65% 35%,100% 35%,100% 60%,65% 60%,65% 100%,35% 100%,35% 60%,0% 60%,0% 35%,35% 35%);
+    background-color: rgb(143, 143, 143);
+    display:inline-block;
+    height: 1rem;
+    width: 1rem;
+}
+
+.view.plus {
+    background-color: rgb(248, 248, 248);
+}
+
+

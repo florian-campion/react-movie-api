@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import FavoriteContext from "../FavoriteContext";
+import viewContext from "../viewContext";
+// import viewContext from "../viewContext";
 import './NavBar.css'
 
 const NavBar = () => {
     
     const favContext = useContext(FavoriteContext);
+    const voirContext = useContext(viewContext);
 
     const linkList = [
         ['/', 'Home'],
         ['/favoris', 'Favoris ('+favContext.favs.length+')'],
+        ['/towatch', 'A Voir ('+voirContext.voir.length+')'],
         ['/rechercher', 'Recherche'],
     ]
     

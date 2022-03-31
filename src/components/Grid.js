@@ -3,29 +3,29 @@ import './Grid.css'
 
 const Grid = (props) => {
 
-    let [pres, setPres] = useState('vignette');
+    // let [pres, setPres] = useState('vignette');
 
-    const presentation = (nPres) => {
-        if (localStorage) {
-            localStorage.setItem('rm-pres', nPres);
-        }
-        setPres(nPres);
-    }
+    // const presentation = (nPres) => {
+    //     if (localStorage) {
+    //         localStorage.setItem('rm-pres', nPres);
+    //     }
+    //     setPres(nPres);
+    // }
 
-    useEffect(
-        () => {
-            if (localStorage) {
-                let rPres = localStorage.getItem('rm-pres');
-                if (rPres) {
-                    setPres(rPres);
-                }
-            }
-        }, []
-    )
+    // useEffect(
+    //     () => {
+    //         if (localStorage) {
+    //             let rPres = localStorage.getItem('rm-pres');
+    //             if (rPres) {
+    //                 setPres(rPres);
+    //             }
+    //         }
+    //     }, []
+    // )
 
     return (
         <div className="Grid">
-            <nav className="optionsNav">
+            {/* <nav className="optionsNav">
                 <span 
                     className={ 'btn'+( (pres == 'vignette') ? ' active' : '' ) } 
                     onClick={ () => { presentation('vignette') } }>
@@ -36,10 +36,12 @@ const Grid = (props) => {
                     onClick={ () => { presentation('liste') } }>
                         Liste
                 </span>
-            </nav>
-            <div className={pres} >
-                { props.children }
-            </div>
+            </nav> */}
+            
+            { props.children }
+            
+                
+        
         </div>
     )
 }

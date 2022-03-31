@@ -1,21 +1,27 @@
-.grid {
-    width: 900px;
+.Grid {
+    width: 1000px;
     max-width: 90%;
     margin: 50px auto;
-}
-    .grid .card {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    
     }
-        .card article img {
+
+    
+
+        
+        article img {
             max-width: 100%;
+            width: 100%;
+            max-height: 73%;
+            margin-bottom: 15px;
+            object-fit: cover;
         }
+
+h3 {
+    font-size: 1rem;
+    padding-top: 1rem;
     
-    .list article {
-        display:flex;
-    }
-    .list article:not(:last-child) {
-        margin-bottom: 20px;
-    }
-    
+}
+

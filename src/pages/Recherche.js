@@ -1,78 +1,74 @@
-import { Fragment, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import Grid from "../components/Grid";
-import Pagination from "../components/Pagination";
-import Movie from "../components/Movie";
+// import { Fragment, useEffect, useState } from "react";
+// import { useSearchParams } from "react-router-dom";
+// import Grid from "../components/Grid";
+import './Recherche.css'
+import { Fragment, useEffect, useState } from 'react';
+import Movie from '../components/Movie';
+import Grid from '../components/Grid';
+// import Movie from '../compenents/Movie';
 
-const Recherche = () => {
+const SEARCH_API="https://api.themoviedb.org/3/search/movie?api_key=ae1c21d7ad5a65a54196ef103c882c14&language=en-US&query=";
 
-    let [search, setSearch] = useSearchParams();
-    let name = search.get('name')
-    let page = search.get('page')
-    page = (!page) ? 1 : +(page)
+const API_MOVIES = "https://api.themoviedb.org/3/discover/movie?api_key=ae1c21d7ad5a65a54196ef103c882c14&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
+
+const Recherche =() => {
+    const [movies, setMovies] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect( () => { fetch(API_MOVIES)
+    .then( res => res.json())
+    .then(data =>{
         
-    let [movieName, setPresoName] = useState( name ? name : '' );
-    let [persos, setPersos] = useState([]);
-    let [pageMax, setPageMax] = useState(0);
-    // liste des besoin pour faire une recherche
-    // possibilitée de varier la recherche -> nom de personnage, page
-    const handleSubmit = (e) => {
-        e.preventDefault(); 
-        if (movieName === '') {
-            setSearch({})
-        } else {
-            setSearch({name: movieName})
-        }
-    }
+        setMovies(data.results);
+    });
 
-    useEffect(
-        () => {
-            let url = 'https://api.themoviedb.org/3/search/multi?api_key=ae1c21d7ad5a65a54196ef103c882c14&language=en-US&page=1&include_adult=false';
-            let name = search.get('name');
-            let query = false;
-            if (name){
-                url += '?name='+name
-                query = true;
-            }
-            let page = search.get('page');
-            if (page)
-                url += (!query ? '?' : '&')+'page='+page
-            fetch(url)
-                .then(response => response.json())
-                .then(personnages => {
-                    if ('info' in personnages) {
-                        setPageMax(personnages.info.pages)
-                    }
-                    if ('results' in personnages) {
-                        setPersos(personnages.results)
-                    } else {
-                        setPersos([])
-                    }
-                })
-        }, [search]
-    )
+    }, []);
+
+    const handleOnSubmit =(e) =>{
+    e.preventDefault();
+    if(searchTerm){
+
+    
+    fetch(SEARCH_API+searchTerm)
+        .then( res => res.json())
+        .then(data =>{
+        
+        setMovies(data.results);
+        });
+
+        setSearchTerm("");
+    }
+    };
+    const handleOnChange =(e) =>{
+    setSearchTerm(e.target.value)
+    };
+
+
+
 
     return (
-        <Fragment>
-            <h1>Recherche</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Titre du film" onChange={(e) => setPresoName(e.target.value) } value={movieName} />
-                <input type="submit" value="envoyer"/>
-            </form>
-            {
-                (persos.length) ?
-                    <Fragment>
-                        <Grid>
-                            { persos.map(item => <Movie key={item.id} persoDatas={item} />) }
-                        </Grid>
-                        <Pagination pageMax={pageMax} pageNumber={page} withSearch />
-                    </Fragment>
-                :
-                    <p className="alert">Aucuns résultats pour votre recherche !</p>
-            }
+        <div>
+            <header>
+            <form onSubmit={handleOnSubmit} > 
+            <input className='rechercher' type="text" placeholder='Rechercher...' 
+            value={searchTerm} onChange={handleOnChange}/>
+            <input type="submit" value="Envoyer"/>
 
-        </Fragment>
-    )
+
+            </form>
+            
+            </header>
+            <Grid >
+
+            {movies.length > 0 && movies.map(movie =>
+                <Movie key={movie.id} movieDatas={movie} />
+                )
+            }
+            </Grid>
+        </div>
+    );
+
+
 }
 
 export default Recherche;

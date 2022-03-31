@@ -11,7 +11,7 @@ const Favoris = () => {
             <h1>Mes Favoris</h1>
             <Grid>
                 {
-                    favs.map( item => <Movie key={item.id} persoDatas={item} />)
+                    favs.map( item => <Movie key={item.id} movieDatas={item} />)
                 }
             </Grid>
         </div>

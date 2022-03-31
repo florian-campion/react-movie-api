@@ -1,6 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Grid from "../components/Grid";
 import Movie from "../components/Movie";
+import "./Accueil.css";
 
 const Accueil = () => {
     let {pageNumber} = useParams();
@@ -33,9 +35,10 @@ const Accueil = () => {
     //     return (<h1>404</h1>)
 
     return (
-        <Fragment>
+        <div>
             
             <h1>Accueil</h1>
+            <Grid>
                 {
                     !APIDatas.length ?
                     <p>Loading...</p>
@@ -45,12 +48,8 @@ const Accueil = () => {
                             <Movie movieDatas={item} key={item.id} />
                     )
                 }
-                {/* {
-                    
-                        <Grid datas={datas}/>
-                } */}
-            
-        </Fragment>
+            </Grid>
+        </div>
     )
 }
 

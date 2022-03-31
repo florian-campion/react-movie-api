@@ -4,11 +4,12 @@
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, .8);
+    background-color: #003463;
     backdrop-filter: blur(4px);
     box-shadow: 0 0 20px rgba(0,0,0, .1);
     position: sticky;
     top: 0;
+    
 }
     .mainNav img {
         height: 100%;
@@ -18,11 +19,11 @@
         text-decoration:none;
         text-transform: uppercase;
         font-weight: bold;
-        color: var(--blue-dark);
+        color: #f0c644;
         transition: all .5s;
     }
         .mainNav a:hover {
-            color: var(--blue);
+            /* color: var(--blue); */
             text-shadow: 0 0 6px var(--green);
             -webkit-text-stroke: .5px var(--blue-dark);
         }
